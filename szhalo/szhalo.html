@@ -29,42 +29,42 @@
                 <th>leírás</th>
             </tr>
             <tr>
-                <td>></td>
+                <td>router#</td>
                 <td>enable</td>
                 <td>Belépés privilegizált módba</td>
             </tr>
             <tr>
-                <td>#</td>
+                <td>Router#</td>
                 <td>configure terminal</td>
                 <td>Belépés konfigurációs módba</td>
             </tr>
             <tr>
-                <td>(config)#</td>
+                <td>Router(config)#</td>
                 <td>interface fa 0/0</td>
                 <td></td>
             </tr>
             <tr>
-                <td>(config)#</td>
+                <td>Router(config)#</td>
                 <td>interface ser 2/0</td>
                 <td></td>
             </tr>
             <tr>
-                <td>(config-int)#</td>
+                <td>Router(config-int)#</td>
                 <td>ip address 192.168.0.1 255.255.255.0</td>
                 <td>IP cím megadása</td>
             </tr>
             <tr>
-                <td>(config-int)#</td>
+                <td>Router(config-int)#</td>
                 <td>clock rate 6400</td>
                 <td>Órajel beállítása (csak seral kábel esetén a DCE - órajeles)</td>
             </tr>
             <tr>
-                <td>(config-int)#</td>
+                <td>Router(config-int)#</td>
                 <td>no shutdown</td>
                 <td>Interfész felkapcsolása</td>
             </tr>
             <tr>
-                <td>(config-int)#</td>
+                <td>Router(config-int)#</td>
                 <td>exit</td>
                 <td>Visszalépés egy szintet</td>
             </tr>
@@ -78,47 +78,47 @@
                 <th>leírás</th>
             </tr>
             <tr>
-                <td>(config)#</td>
+                <td>Router(config)#</td>
                 <td>ip route [IP cím] [alhálózati maszk] [next hop]</td>
                 <td>Statikus útvonal konfigurálása (cél hálózat/cél hálózat maszk/következő router címe)</td>
             </tr>
             <tr>
-                <td>(config)#</td>
+                <td>Router(config)#</td>
                 <td>ip route 0.0.0.0 0.0.0.0 [next hop]</td>
                 <td>Alapértelmezett útvonal konfigurációja</td>
             </tr>
             <tr>
-                <td>(config)#</td>
+                <td>Router(config)#</td>
                 <td>router rip</td>
                 <td>Belépés RIP konfigurációs módba</td>
             </tr>
             <tr>
-                <td>(config-router)#</td>
+                <td>Router(config-router)#</td>
                 <td>version 2</td>
                 <td>RIP verziószám megadása</td>
             </tr>
             <tr>
-                <td>(config-router)#</td>
+                <td>Router(config-router)#</td>
                 <td>network 192.168.2.0</td>
                 <td>RIP hálózatok megadása (amelyek ehhez a routerhez csatlakoznak)</td>
             </tr>
             <tr>
-                <td>(config-router)#</td>
+                <td>Router(config-router)#</td>
                 <td>default-information originate</td>
                 <td>RIP alapértelmezett útvonalak hirdetése</td>
             </tr>
             <tr>
-                <td>(config-router)#</td>
+                <td>Router(config-router)#</td>
                 <td>redistribute static</td>
                 <td>RIP Statikus útvonal hirdetése</td>
             </tr>
             <tr>
-                <td>(config-router)#</td>
+                <td>Router(config-router)#</td>
                 <td><strong>no auto-summary</strong></td>
                 <td>RIP - CIDR: classless címek hirdetése <strong>azonos/változó alhálózatokra bontás esetén kötelező!</strong></td>
             </tr>
             <tr>
-                <td>(config-router)#</td>
+                <td>Router(config-router)#</td>
                 <td>passive-interface FastEthernet 4/0</td>
                 <td>RIP frissítések letiltása megadott interfészen</td>
             </tr>
@@ -132,18 +132,18 @@
                 <th>leírás</th>
             </tr>
             <tr>
-                <td>#</td>
+                <td>Router#</td>
                 <td>show ip route</td>
                 <td>Forgalomirányítási tábla lekérése</td>
 
             </tr>
             <tr>
-                <td>#</td>
+                <td>Router#</td>
                 <td>show startup-config</td>
                 <td>Indítási konfiguráció lekérdezése</td>
             </tr>
             <tr>
-                <td>#</td>
+                <td>Router#</td>
                 <td>show running-config</td>
                 <td>Futó konfiguráció lekérdezése</td>
             </tr>
@@ -386,7 +386,7 @@
 
         <hr>
 
-        <h1>Egyéb</h1>
+        <h1>Egyéb parancsok</h1>
 
         <h2>Mentés</h2>
         <table class="table table-striped table-hover" style="width:100%">
@@ -410,18 +410,18 @@
                 <th>leírás</th>
             </tr>
             <tr>
-                <td>(config)#</td>
+                <td>Router(config)#</td>
                 <td>hostname <routerneve></td>
                 <td>Hostnév megadása</td>
             </tr>
             <tr>
-                <td>(config)#</td>
+                <td>Router(config)#</td>
                 <td>enable password <jelszó></td>
                 <td>Egyszerű (titkosítatlan) jelszó megadása</td>
 
             </tr>
             <tr>
-                <td>(config)#</td>
+                <td>Router(config)#</td>
                 <td>enable secret <jelszó></td>
                 <td>Titkosított jelszó megadása</td>
             </tr>
