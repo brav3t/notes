@@ -8,346 +8,423 @@
     <link href="../style.css" rel="stylesheet">
 </head>
 <body>
+    <main class="container">
 
-<h3>Azonos alhálózat számítás</h3>
-<p><a href="https://www.aelius.com/njh/subnet_sheet.html">Subnet Mask Cheat Sheet</a></p>
-<p><a href="./azonos_alhalozat_segedlet.pdf">azonos segédlet</a></p>
 
-<h3>VLSM alhálózat számítás</h3>
-<p><a href="http://vlsm-calc.net/">VLSM (CIDR) Subnet Calculator</a></p>
-<p><a href="./VLSM_segedlet.pdf">VLSM segédlet</a></p>
+        <h3>Azonos alhálózat számítás</h3>
+        <p><a href="https://www.aelius.com/njh/subnet_sheet.html">Subnet Mask Cheat Sheet</a></p>
+        <p><a href="./azonos_alhalozat_segedlet.pdf">azonos segédlet</a></p>
 
-<h1>Alapparancsok</h1>
+        <h3>VLSM alhálózat számítás</h3>
+        <p><a href="http://vlsm-calc.net/">VLSM (CIDR) Subnet Calculator</a></p>
+        <p><a href="./VLSM_segedlet.pdf">VLSM segédlet</a></p>
 
-<h2>Interfész konfiguráció</h2>
-<table style="width:100%">
- <tr>
-  <td>></td>
-  <td>enable</td>
-  <td>Belépés privilegizált módba</td>  
- </tr>
- <tr>
-  <td>#</td>	
-  <td>configure terminal</td>
-  <td>Belépés konfigurációs módba</td>  
- </tr>
- <tr>
-  <td>(config)#</td>	  
-  <td>interface fa 0/0</td>
-  <td></td>  
- </tr> 
- <tr>
-  <td>(config)#</td>	  
-  <td>interface ser 2/0</td>
-  <td></td>  
- </tr>
- <tr>
-  <td>(config-int)#</td>	  
-  <td>ip address 192.168.0.1 255.255.255.0</td>
-  <td>IP cím megadása</td>  
- </tr>
- <tr>
-  <td>(config-int)#</td>	
-  <td>clock rate 6400</td>
-  <td>Órajel beállítása (csak seral kábel esetén a DCE - órajeles)</td>  
- </tr>
- <tr>
-  <td>(config-int)#</td>	
-  <td>no shutdown</td>
-  <td>Interfész felkapcsolása</td>  
- </tr>
- <tr>
-  <td>(config-int)#</td>	
-  <td>exit</td>
-  <td>Visszalépés egy szintet</td>  
- </tr>
-</table> 
+        <h1>Alapparancsok</h1>
 
-<h2>Forgalomirányítási beállítások</h2>
-<table style="width:100%">
- <tr>
-  <td>(config)#</td>	
-  <td>ip route [IP cím] [alhálózati maszk] [next hop]</td>
-  <td>Statikus útvonal konfigurálása (cél hálózat/cél hálózat maszk/következő router címe)</td>  
- </tr>
- <tr>
-  <td>(config)#</td>	
-  <td>ip route 0.0.0.0 0.0.0.0 [next hop]</td>
-  <td>Alapértelmezett útvonal konfigurációja</td>  
- </tr>
- <tr>
-  <td>(config)#</td>	
-  <td>router rip</td>
-  <td>Belépés RIP konfigurációs módba</td>  
- </tr>
- <tr>
-  <td>(config-router)#</td>	
-  <td>version 2</td>
-  <td>RIP verziószám megadása</td>  
- </tr>
- <tr>
-  <td>(config-router)#</td>	
-  <td>network 192.168.2.0</td>
-  <td>RIP hálózatok megadása (amelyek ehhez a routerhez csatlakoznak)</td>  
- </tr>
- <tr>
-  <td>(config-router)#</td>	
-  <td>default-information originate</td>
-  <td>RIP alapértelmezett útvonalak hirdetése</td>  
- </tr>
- <tr>
-  <td>(config-router)#</td>	
-  <td>redistribute static</td>
-  <td>RIP Statikus útvonal hirdetése</td>  
- </tr>
- <tr>
-  <td>(config-router)#</td>
-  <td><strong>no auto-summary</strong></td>
-  <td>RIP - CIDR: classless címek hirdetése <strong>azonos/változó alhálózatokra bontás esetén kötelező!</strong></td>	
- </tr>
- <tr>  
-  <td>(config-router)#</td>
-  <td>passive-interface FastEthernet 4/0</td>
-  <td>RIP frissítések letiltása megadott interfészen</td>	  
- </tr>
-</table>
-  
-<h2>Beállítások vizsgálata</h2>
-<table style="width:50%">
-<tr>  
-  <td># show ip route</td>
-  <td>Forgalomirányítási tábla lekérése</td>	
-  <td></td>
- </tr>
- <tr>  
-  <td># show startup-config</td>
-  <td>Indítási konfiguráció lekérdezése</td>	
-  <td></td>
- </tr>
- <tr>  
-  <td># show running-config</td>
-  <td>Futó konfiguráció lekérdezése</td>	
-  <td></td>
- </tr>
-</table>
+        <h2>Interfész konfiguráció</h2>
+        <table class="table table-striped table-hover" style="width:100%">
+            <tr>
+                <th>konzol</th>
+                <th>parancs</th>
+                <th>leírás</th>
+            </tr>
+            <tr>
+                <td>></td>
+                <td>enable</td>
+                <td>Belépés privilegizált módba</td>
+            </tr>
+            <tr>
+                <td>#</td>
+                <td>configure terminal</td>
+                <td>Belépés konfigurációs módba</td>
+            </tr>
+            <tr>
+                <td>(config)#</td>
+                <td>interface fa 0/0</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>(config)#</td>
+                <td>interface ser 2/0</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>(config-int)#</td>
+                <td>ip address 192.168.0.1 255.255.255.0</td>
+                <td>IP cím megadása</td>
+            </tr>
+            <tr>
+                <td>(config-int)#</td>
+                <td>clock rate 6400</td>
+                <td>Órajel beállítása (csak seral kábel esetén a DCE - órajeles)</td>
+            </tr>
+            <tr>
+                <td>(config-int)#</td>
+                <td>no shutdown</td>
+                <td>Interfész felkapcsolása</td>
+            </tr>
+            <tr>
+                <td>(config-int)#</td>
+                <td>exit</td>
+                <td>Visszalépés egy szintet</td>
+            </tr>
+        </table>
 
-<hr>
+        <h2>Forgalomirányítási beállítások</h2>
+        <table class="table table-striped table-hover" style="width:100%">
+            <tr>
+                <th>konzol</th>
+                <th>parancs</th>
+                <th>leírás</th>
+            </tr>
+            <tr>
+                <td>(config)#</td>
+                <td>ip route [IP cím] [alhálózati maszk] [next hop]</td>
+                <td>Statikus útvonal konfigurálása (cél hálózat/cél hálózat maszk/következő router címe)</td>
+            </tr>
+            <tr>
+                <td>(config)#</td>
+                <td>ip route 0.0.0.0 0.0.0.0 [next hop]</td>
+                <td>Alapértelmezett útvonal konfigurációja</td>
+            </tr>
+            <tr>
+                <td>(config)#</td>
+                <td>router rip</td>
+                <td>Belépés RIP konfigurációs módba</td>
+            </tr>
+            <tr>
+                <td>(config-router)#</td>
+                <td>version 2</td>
+                <td>RIP verziószám megadása</td>
+            </tr>
+            <tr>
+                <td>(config-router)#</td>
+                <td>network 192.168.2.0</td>
+                <td>RIP hálózatok megadása (amelyek ehhez a routerhez csatlakoznak)</td>
+            </tr>
+            <tr>
+                <td>(config-router)#</td>
+                <td>default-information originate</td>
+                <td>RIP alapértelmezett útvonalak hirdetése</td>
+            </tr>
+            <tr>
+                <td>(config-router)#</td>
+                <td>redistribute static</td>
+                <td>RIP Statikus útvonal hirdetése</td>
+            </tr>
+            <tr>
+                <td>(config-router)#</td>
+                <td><strong>no auto-summary</strong></td>
+                <td>RIP - CIDR: classless címek hirdetése <strong>azonos/változó alhálózatokra bontás esetén kötelező!</strong></td>
+            </tr>
+            <tr>
+                <td>(config-router)#</td>
+                <td>passive-interface FastEthernet 4/0</td>
+                <td>RIP frissítések letiltása megadott interfészen</td>
+            </tr>
+        </table>
 
-<h2>DHCP konfigurálása</h2>
+        <h2>Beállítások vizsgálata</h2>
+        <table class="table table-striped table-hover" style="width:100%">
+            <tr>
+                <th>konzol</th>
+                <th>parancs</th>
+                <th>leírás</th>
+            </tr>
+            <tr>
+                <td>#</td>
+                <td>show ip route</td>
+                <td>Forgalomirányítási tábla lekérése</td>
+                
+            </tr>
+            <tr>
+                <td>#</td>
+                <td>show startup-config</td>
+                <td>Indítási konfiguráció lekérdezése</td>                
+            </tr>
+            <tr>
+                <td>#</td>
+                <td>show running-config</td>
+                <td>Futó konfiguráció lekérdezése</td>                
+            </tr>
+        </table>
 
-<h3>DHCP tartomány(pool) konfigurálása</h3>
-<table style="width:50%">
-<tr>  
-  <td>(config)#</td>	
-  <td>ip dhcp pool [poolName]</td>  
- </tr>
- <tr>  
-  <td>(dhcp-config)#</td>	
-  <td>network 192.168.0.0 255.255.255.0</td>  
- </tr>
- <tr>  
-  <td>(dhcp-config)#</td>	
-  <td>default-router 192.168.0.1</td>  
- </tr>
- <tr>  
-  <td>(dhcp-config)#</td>	
-  <td>dns-server 192.168.0.254</td>  
- </tr>
- <tr>  
-  <td>(dhcp-config)#</td>	
-  <td>exit</td>  
- </tr>
- </table>
- 
-<h3>Tartomány kizárása</h3>
-<table style="width:50%"> 
- <tr>  
-  <td>Router(config)#</td>
-  <td>ip dhcp excluded-address 192.168.0.1 192.168.0.9</td>  
- </tr>
-</table>
+        <hr>
 
-<hr>
+        <h2>DHCP konfigurálása</h2>
 
-<h2>VLAN</h2>
+        <h3>DHCP tartomány(pool) konfigurálása</h3>
+        <table class="table table-striped table-hover" style="width:100%">
+            <tr>
+                <th>konzol</th>
+                <th>parancs</th>     
+                <th>leírás</th>
+            </tr>
+            <tr>
+                <td>Router(config)#</td>
+                <td>ip dhcp pool [poolName]</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Router(dhcp-config)#</td>
+                <td>network 192.168.0.0 255.255.255.0</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Router(dhcp-config)#</td>
+                <td>default-router 192.168.0.1</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Router(dhcp-config)#</td>
+                <td>dns-server 192.168.0.254</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Router(dhcp-config)#</td>
+                <td>exit</td>
+                <td></td>
+            </tr>
+        </table>
 
-<h3>VLAN konfigurálása Router-en</h3>
-<table style="width:50%">
-<tr>  
-  <td>Router(config)#</td>
-  <td>interface FastEthernet X/Y</td>	  
- </tr>
- <tr>  
-  <td>Router(config-if)#</td>
-  <td>no shutdown</td>	  
- </tr>
- <tr>  
-  <td>Router(config-if)#</td>
-  <td>exit</td>	  
- </tr>
- <tr>  
-  <td>Router(config)#</td>
-  <td>interface FastEthernet X/Y.Z</td>	  
- </tr>
- <tr>  
-  <td>Router(config-subif)#</td>
-  <td>encapsulation dot1Q [VLAN]</td>	  
- </tr>
- <tr>  
-  <td>Router(config-subif)#</td>
-  <td>ip address [IP cím] [alhálózati maszk]</td>	  
- </tr>
- <tr>  
-  <td>Router(config-subif)#</td>
-  <td>no shutdown</td>	  
- </tr>
- <tr>  
-  <td>Router(config-subif)#</td>
-  <td>exit</td>	  
- </tr>
-</table>
+        <h3>Tartomány kizárása</h3>
+        <table class="table table-striped table-hover" style="width:100%">
+            <tr>
+                <th>konzol</th>
+                <th>parancs</th>                
+                <th>leírás</th>
+            </tr>
+            <tr>
+                <td>Router(config)#</td>
+                <td>ip dhcp excluded-address 192.168.0.1 192.168.0.9</td>
+                <td></td>
+            </tr>
+        </table>
 
-<ul>
- <li>X,Y - Az adott interfész azonosítója</li>
- <li>Z - Az adott al-interfész azonosítója (általában a VLANID-ja)</li>
- <li>[VLAN] - A VLAN azonosítója (ID)</li>
-</ul>
+        <hr>
 
-<h3>VLAN konfigurálása Swich-en</h3>
+        <h2>VLAN</h2>
 
-<table style="width:50%">
- <tr>  
-  <td>Switch></td>
-  <td>enable</td>	  
- </tr>
- <tr>  
-  <td>Switch#</td>
-  <td>configure terminal</td>	  
- </tr>
- <tr>  
-  <td>Switch(config)#</td>
-  <td>vlan [VLAN]</td>	  
- </tr>
- <tr>  
-  <td>Switch(config-vlan)#</td>
-  <td>name [VLAN_NEVE]</td>	  
- </tr>
- <tr>  
-  <td>Switch(config-vlan)#</td>
-  <td>exit</td>	  
- </tr> 
-</table>
+        <h3>VLAN konfigurálása Router-en</h3>
+        <table class="table table-striped table-hover" style="width:100%">
+            <tr>
+                <th>konzol</th>
+                <th>parancs</th>    
+                <th>leírás</th>
+            </tr>
+            <tr>
+                <td>Router(config)#</td>
+                <td>interface FastEthernet X/Y</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Router(config-if)#</td>
+                <td>no shutdown</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Router(config-if)#</td>
+                <td>exit</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Router(config)#</td>
+                <td>interface FastEthernet X/Y.Z</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Router(config-subif)#</td>
+                <td>encapsulation dot1Q [VLAN]</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Router(config-subif)#</td>
+                <td>ip address [IP cím] [alhálózati maszk]</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Router(config-subif)#</td>
+                <td>no shutdown</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Router(config-subif)#</td>
+                <td>exit</td>
+                <td></td>
+            </tr>
+        </table>
 
-<ul>
- <li>[VLAN] - A VLAN azonosítója (ID)</li>
- <li>[VLAN_NEVE] - A VLAN Beszédes neve</li> 
-</ul>
+        <ul>
+            <li>X,Y - Az adott interfész azonosítója</li>
+            <li>Z - Az adott al-interfész azonosítója (általában a VLANID-ja)</li>
+            <li>[VLAN] - A VLAN azonosítója (ID)</li>
+        </ul>
 
-<h3>VLAN Access konfigurálása Swich-en</h3>
-<table style="width:75%">
- <tr>  
-  <td>Switch(config)#</td>
-  <td>interface FastEthernet X/Y</td>	
-  <td>Egy interfészre</td>
- </tr>
- <tr>  
-  <td>Switch(config)#</td>
-  <td>interface range FastEthernet X/Y-Z</td>	
-  <td>Interfész tartományra</td>
- </tr>
- <tr>  
-  <td>Switch(config-if-range)#</td>
-  <td>switchport access vlan [VLAN]</td>	  
-  <td></td>
- </tr>
- <tr>  
-  <td>Switch(config-if-range)#</td>
-  <td>no shutdown</td>	
-  <td></td>
- </tr>
- <tr>  
-  <td>Switch(config-if-range)#</td>
-  <td>exit</td>	
-  <td></td>
- </tr> 
-</table>
+        <h3>VLAN konfigurálása Swich-en</h3>
+        <table class="table table-striped table-hover" style="width:100%">
+            <tr>
+                <th>konzol</th>
+                <th>parancs</th>
+                <th>leírás</th>
+            </tr>
+            <tr>
+                <td>Switch></td>
+                <td>enable</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Switch#</td>
+                <td>configure terminal</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Switch(config)#</td>
+                <td>vlan [VLAN]</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Switch(config-vlan)#</td>
+                <td>name [VLAN_NEVE]</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Switch(config-vlan)#</td>
+                <td>exit</td>
+                <td></td>
+            </tr>
+        </table>
 
-<ul>
- <li>X,Y - A kezdeti interfész azonosítója</li>
- <li>Z - Az utolsó interfész azonosítója</li> 
- <li>[VLAN] - A VLAN azonosítója (ID)</li> 
-</ul>
+        <ul>
+            <li>[VLAN] - A VLAN azonosítója (ID)</li>
+            <li>[VLAN_NEVE] - A VLAN Beszédes neve</li>
+        </ul>
 
-<h3>VLAN Trunk konfigurálása Swich-en</h3>
-<table style="width:75%">
- <tr>  
-  <td>Switch(config)#</td>
-  <td>interface FastEthernet X/Y</td>	
-  <td>Egy interfészre</td>
- </tr>
- <tr>  
-  <td>Switch(config)#</td>
-  <td>interface range FastEthernet X/Y -Z</td>	
-  <td>Interfész tartományra</td>
- </tr>
- <tr>  
-  <td>Switch(config-if-range)#</td>
-  <td>switchport mode trunk</td>	
-  <td></td>
- </tr>
- <tr>  
-  <td>Switch(config-if-range)#</td>
-  <td>switchport trunk allowed vlan add [VLAN 1]</td>	
-  <td></td>
- </tr>
- <tr>  
-  <td>Switch(config-if-range)#</td>
-  <td>switchport  trunk allowed vlan add [VLAN 2]</td>	
-  <td></td>
- </tr>
- <tr>  
-  <td>Switch(config-if-range)#</td>
-  <td>switchport trunk allowed vlan add [VLAN N]</td>	
-  <td></td>
- </tr>
-</table>
+        <h3>VLAN Access konfigurálása Swich-en</h3>
+        <table class="table table-striped table-hover" style="width:100%">
+            <tr>
+                <th>konzol</th>
+                <th>parancs</th>
+                <th>leírás</th>
+            </tr>
+            <tr>
+                <td>Switch(config)#</td>
+                <td>interface FastEthernet X/Y</td>
+                <td>Egy interfészre</td>
+            </tr>
+            <tr>
+                <td>Switch(config)#</td>
+                <td>interface range FastEthernet X/Y-Z</td>
+                <td>Interfész tartományra</td>
+            </tr>
+            <tr>
+                <td>Switch(config-if-range)#</td>
+                <td>switchport access vlan [VLAN]</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Switch(config-if-range)#</td>
+                <td>no shutdown</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Switch(config-if-range)#</td>
+                <td>exit</td>
+                <td></td>
+            </tr>
+        </table>
 
-<ul>
- <li>X,Y - A kezdeti interfész azonosítója</li>
- <li>Z - Az utolsó interfész azonosítója</li> 
- <li>[VLAN1|2|N] - A VLAN azonosítója (ID)</li> 
-</ul>
+        <ul>
+            <li>X,Y - A kezdeti interfész azonosítója</li>
+            <li>Z - Az utolsó interfész azonosítója</li>
+            <li>[VLAN] - A VLAN azonosítója (ID)</li>
+        </ul>
 
-<hr>
+        <h3>VLAN Trunk konfigurálása Swich-en</h3>
+        <table class="table table-striped table-hover" style="width:100%">
+            <tr>
+                <th>konzol</th>
+                <th>parancs</th>
+                <th>leírás</th>
+            </tr>
+            <tr>
+                <td>Switch(config)#</td>
+                <td>interface FastEthernet X/Y</td>
+                <td>Egy interfészre</td>
+            </tr>
+            <tr>
+                <td>Switch(config)#</td>
+                <td>interface range FastEthernet X/Y -Z</td>
+                <td>Interfész tartományra</td>
+            </tr>
+            <tr>
+                <td>Switch(config-if-range)#</td>
+                <td>switchport mode trunk</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Switch(config-if-range)#</td>
+                <td>switchport trunk allowed vlan add [VLAN 1]</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Switch(config-if-range)#</td>
+                <td>switchport  trunk allowed vlan add [VLAN 2]</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Switch(config-if-range)#</td>
+                <td>switchport trunk allowed vlan add [VLAN N]</td>
+                <td></td>
+            </tr>
+        </table>
 
-<h2>Mentés</h2>
-<table style="width:75%">
-<tr>  
-  <td>#</td>
-  <td>copy running-config startup-config (copy ru start)</td>
-  <td>A konfiguráció elmentése</td>	  
- </tr>
-</table>
-  
-<h2>Egyéb beállítás</h2>
-<table style="width:75%">
-<tr>  
-  <td>(config)#</td>
-  <td>hostname <routerneve></td>
-  <td>Hostnév megadása</td>	  
- </tr>
- <tr>  
-  <td>(config)#</td>
-  <td>enable password <jelszó></td>
-  <td>Egyszerű (titkosítatlan) jelszó megadása</td>	
-  
- </tr>
- <tr>  
-  <td>(config)#</td>
-  <td>enable secret <jelszó></td>
-  <td>Titkosított jelszó megadása</td>	  
- </tr>
-</table>
+        <ul>
+            <li>X,Y - A kezdeti interfész azonosítója</li>
+            <li>Z - Az utolsó interfész azonosítója</li>
+            <li>[VLAN1|2|N] - A VLAN azonosítója (ID)</li>
+        </ul>
 
+        <hr>
+
+        <h2>Mentés</h2>
+        <table class="table table-striped table-hover" style="width:100%">
+            <tr>
+                <th>konzol</th>
+                <th>parancs</th>
+                <th>leírás</th>
+            </tr>
+            <tr>
+                <td>#</td>
+                <td>copy running-config startup-config (copy ru start)</td>
+                <td>A konfiguráció elmentése</td>
+            </tr>
+        </table>
+
+        <h2>Egyéb beállítás</h2>
+        <table class="table table-striped table-hover" style="width:100%">
+            <tr>
+                <th>konzol</th>
+                <th>parancs</th>
+                <th>leírás</th>
+            </tr>
+            <tr>
+                <td>(config)#</td>
+                <td>hostname <routerneve></td>
+                <td>Hostnév megadása</td>
+            </tr>
+            <tr>
+                <td>(config)#</td>
+                <td>enable password <jelszó></td>
+                <td>Egyszerű (titkosítatlan) jelszó megadása</td>
+
+            </tr>
+            <tr>
+                <td>(config)#</td>
+                <td>enable secret <jelszó></td>
+                <td>Titkosított jelszó megadása</td>
+            </tr>
+        </table>
+
+    </main>
 </body>
 </html> 
